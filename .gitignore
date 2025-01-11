@@ -1,0 +1,38 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build Artifacts
+build/
+dist/
+dist-ssr/
+
+# Testing Coverage Reports
+coverage/
+
+# Environment Files (Sensitive Information)
+*.local
+
+# Editor Directories and Files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Miscellaneous OS/Editor Files
+.DS_Store  # macOS system files (already covered above)
