@@ -4,27 +4,207 @@ import DocketRocketLogo from '../components/DocketRocketLogo';
 import { mockDockets } from '../data/mockData';
 import { Docket, DocumentSummary, Comment, Reply } from '../types/docket';
 
-
 export default function LandingPage() {
   const [hoveredDocket, setHoveredDocket] = useState<Docket | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string>('Hot Dockets'); // State to track active filter
   const navigate = useNavigate(); // Hook for navigation
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
-      {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="w-16 h-16 absolute top-4 left-4">
-          <DocketRocketLogo />
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Docket Rocket</h2>
-
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex">
+      {/* Left Section */}
+      <div className="w-64 bg-white p-6 shadow-md flex-shrink-0">
+        {/* Logo and Heading */}
+        <div className="mb-6 bg-gradient-to-r from-blue-100 to-purple-100 p-4 rounded-lg">
+          <div className="w-16 h-16">
+            <DocketRocketLogo />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mt-4">Docket Rocket</h2>
         </div>
 
+        {/* Filters */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Filters</h2>
+          <div className="mb-6">
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'Hot Dockets' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Hot Dockets')}
+                >
+                  <span>Hot Dockets</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">12</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Status */}
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">Status</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'Open Dockets' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Open Dockets')}
+                >
+                  <span>Open Dockets</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">12</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'Closed Dockets' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Closed Dockets')}
+                >
+                  <span>Closed Dockets</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">8</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Categories */}
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">Categories</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'Telecommunications' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Telecommunications')}
+                >
+                  <span>Telecommunications</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">15</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+ activeFilter === 'Broadcasting' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Broadcasting')}
+                >
+                  <span>Broadcasting</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">10</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Date Range */}
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">Date Range</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'Last 7 Days' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Last 7 Days')}
+                >
+                  <span>Last 7 Days</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">5</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'Last 30 Days' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Last 30 Days')}
+                >
+                  <span>Last 30 Days</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">12</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Popular Tags */}
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">Popular Tags</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === '5G' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('5G')}
+                >
+                  <span>5G</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">8</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'Net Neutrality' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('Net Neutrality')}
+                >
+                  <span>Net Neutrality</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">6</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Regions */}
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">Regions</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'East Coast' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('East Coast')}
+                >
+                  <span>East Coast</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">9</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className={`flex justify-between items-center ${
+                    activeFilter === 'West Coast' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                  }`}
+                  onClick={() => setActiveFilter('West Coast')}
+                >
+                  <span>West Coast</span>
+                  <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">7</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Section */}
+      <div className="flex-1 p-6">
         {/* Search Bar */}
-        <div className="flex justify-center mb-12">
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <div className="mb-12">
+          <p className="text-lg text-gray-600 mb-4">
             Browse and analyze FCC docket documents with AI-powered summaries
           </p>
-          <br />
           <input
             type="text"
             placeholder="Search dockets..."
@@ -32,134 +212,28 @@ export default function LandingPage() {
           />
         </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Section: Filters */}
-          {/* Left Section: Filters */}
-          <div className="lg:col-span-1 bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Filters</h2>
+        {/* Hot Dockets Heading */}
+ <h2 className="text-2xl font-bold text-gray-900 mb-4">{activeFilter}</h2>
 
-            {/* Section 1: Status */}
-            <div className="mb-6">
-              <h3 className="text-lg font-medium text-gray-700 mb-3">Status</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>Open Dockets</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">12</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>Closed Dockets</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">8</span>
-                  </a>
-                </li>
-              </ul>
+        {/* Hot Docket Tiles */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {mockDockets.map((docket) => (
+            <div
+              key={docket.name}
+              className={`relative bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-600 ${hoveredDocket?.name === docket.name ? 'bg-teal-200 border-0 border-teal-400' : 'hover:bg-blue-50'
+                }`}
+              onMouseEnter={() => setHoveredDocket(docket)}
+            >
+              {/* Docket Name */}
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{docket.name}</h3>
+
+              {/* Docket Description */}
+              <p className="text-sm text-gray-600 mb-4">{docket.description_display}</p>
+
+              {/* Docket Date */}
+              <span className="text-sm text-gray-500">{docket.date_proceeding_created}</span>
             </div>
-
-            {/* Section 2: Categories */}
-            <div className="mb-6">
-              <h3 className="text-lg font-medium text-gray-700 mb-3">Categories</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>Telecommunications</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">15</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>Broadcasting</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">10</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Section 3: Date Range */}
-            <div className="mb-6">
-              <h3 className="text-lg font-medium text-gray-700 mb-3">Date Range</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>Last 7 Days</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">5</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>Last 30 Days</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">12</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Section 4: Popular Tags */}
-            <div className="mb-6">
-              <h3 className="text-lg font-medium text-gray-700 mb-3">Popular Tags</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>5G</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded -full text-sm">8</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>Net Neutrality</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">6</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Section 5: Regions */}
-            <div className="mb-6">
-              <h3 className="text-lg font-medium text-gray-700 mb-3">Regions</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>East Coast</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">9</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="flex justify-between items-center text-gray-700 hover:text-indigo-600">
-                    <span>West Coast</span>
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">7</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Right Section: Hot Dockets */}
-          <div className="lg:col-span-2">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">Hot Dockets</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mockDockets.slice(0, 6).map((docket) => (
-                <div
-                  key={docket.name}
-                  className={`relative bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-600 ${hoveredDocket?.name === docket.name ? 'bg-teal-200 border-0 border-teal-400' : 'hover:bg-blue-50'
-                    }`}
-                  onMouseEnter={() => setHoveredDocket(docket)}
-                >
-                  {/* Docket Name (Top) */}
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{docket.name}</h3>
-
-                  {/* Docket Description (Middle) */}
-                  <p className="text-sm text-gray-600 mb-4 ">{docket.description_display}</p>
-
-                  {/* Docket Date (Bottom) */}
-                  <span className="text-sm text-gray-500">{docket.date_proceeding_created}</span>
-
-
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 

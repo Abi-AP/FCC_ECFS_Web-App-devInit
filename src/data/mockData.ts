@@ -53,7 +53,42 @@ export const mockDockets = [
       name: "Wireless Telecommunications Bureau",
       code: "WTB"
     }
+  },{
+    name: "17-54",
+    description_display: "FCC 214 Transfer Filing 2.22.17",
+    date_proceeding_created: "2024-01-15T00:00:00.000Z",
+    bureau: {
+      name: "Wireless Telecommunications Bureau",
+      code: "WTB"
+    }
   },
+  {
+    name: "21-390",
+    description_display: "211011 L3T WA Sec 214 Application",
+    date_proceeding_created: "2024-01-15T00:00:00.000Z",
+    bureau: {
+      name: "Wireless Telecommunications Bureau",
+      code: "WTB"
+    }
+  },
+  {
+    name: "17-291",
+    description_display: "GetGo - FCC VoIP Application - Public Version",
+    date_proceeding_created: "2024-01-15T00:00:00.000Z",
+    bureau: {
+      name: "Wireless Telecommunications Bureau",
+      code: "WTB"
+    }
+  },
+  {
+    name: "17-265",
+    description_display: "2017 09 29 Verizon Sec 214 App (49 WCs 4 DS0s)",
+    date_proceeding_created: "2024-01-15T00:00:00.000Z",
+    bureau: {
+      name: "Wireless Telecommunications Bureau",
+      code: "WTB"
+    }
+  }
 ];
 
 export const mockDocuments = {

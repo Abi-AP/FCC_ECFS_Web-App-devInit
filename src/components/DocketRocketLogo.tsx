@@ -3,11 +3,11 @@ import { Rocket } from 'lucide-react';
 
 export default function DocketRocketLogo() {
   return (
-    <div className="relative w-40 h-40 mx-auto">
+    <div className="relative w-20 h-20 mx-auto">
       {/* Custom document outline without horizontal lines */}
       <svg 
         viewBox="0 0 24 24" 
-        className="w-40 h-40 text-blue-600 absolute top-0 left-0"
+        className="w-20 h-20 text-blue-600 absolute top-0 left-0"
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
@@ -18,7 +18,7 @@ export default function DocketRocketLogo() {
       
       {/* Rocket overlay */}
       <Rocket 
-        className="w-6 h-6 text-blue-500 absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-45" 
+        className="w-8 h-8 text-blue-500 absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-45" 
         strokeWidth={1.5}
       />
     </div>
