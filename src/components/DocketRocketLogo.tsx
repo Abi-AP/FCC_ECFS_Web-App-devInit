@@ -18,7 +18,7 @@ export default function DocketRocketLogo() {
       
       {/* Rocket overlay */}
       <Rocket 
-        className="w-16 h-16 text-blue-500 absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-45" 
+        className="w-6 h-6 text-blue-500 absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-45" 
         strokeWidth={1.5}
       />
     </div>
