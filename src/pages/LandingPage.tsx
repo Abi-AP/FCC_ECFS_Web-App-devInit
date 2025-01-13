@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import DocketRocketLogo from '../components/DocketRocketLogo';
 import { mockDockets } from '../data/mockData';
 import { Docket, DocumentSummary, Comment, Reply } from '../types/docket';
+import HeaderSection from '../components/HeaderSection';
 
 export default function LandingPage() {
   const [hoveredDocket, setHoveredDocket] = useState<Docket | null>(null);
@@ -12,7 +13,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex">
       {/* Left Section */}
-      <div className="w-64 bg-white p-6 shadow-md flex-shrink-0">
+      <div className="w-64 bg-gradient-to-br from-blue-50 to-[#07326A] p-6 shadow-md flex-shrink-0">
         {/* Logo and Heading */}
         <div className="mb-6 bg-gradient-to-r from-blue-100 to-purple-100 p-4 rounded-lg">
           <div className="w-16 h-16">
@@ -25,8 +26,8 @@ export default function LandingPage() {
         <div>
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Filters</h2>
           <div className="mb-6">
-            <ul className="space-y-2">
-              <li>
+           <ul className="space-y-2">
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -45,7 +46,7 @@ export default function LandingPage() {
           <div className="mb-6">
             <h3 className="text-lg font-medium text-gray-700 mb-3">Status</h3>
             <ul className="space-y-2">
-              <li>
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -53,11 +54,11 @@ export default function LandingPage() {
                   }`}
                   onClick={() => setActiveFilter('Open Dockets')}
                 >
-                  <span>Open Dockets</span>
+                  <span >Open Dockets</span>
                   <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">12</span>
                 </a>
               </li>
-              <li>
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -75,8 +76,8 @@ export default function LandingPage() {
           {/* Categories */}
           <div className="mb-6">
             <h3 className="text-lg font-medium text-gray-700 mb-3">Categories</h3>
-            <ul className="space-y-2">
-              <li>
+           <ul className="space-y-2">
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -88,11 +89,11 @@ export default function LandingPage() {
                   <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">15</span>
                 </a>
               </li>
-              <li>
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
- activeFilter === 'Broadcasting' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
+                    activeFilter === 'Broadcasting' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
                   }`}
                   onClick={() => setActiveFilter('Broadcasting')}
                 >
@@ -106,8 +107,8 @@ export default function LandingPage() {
           {/* Date Range */}
           <div className="mb-6">
             <h3 className="text-lg font-medium text-gray-700 mb-3">Date Range</h3>
-            <ul className="space-y-2">
-              <li>
+           <ul className="space-y-2">
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -119,7 +120,7 @@ export default function LandingPage() {
                   <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">5</span>
                 </a>
               </li>
-              <li>
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -137,8 +138,8 @@ export default function LandingPage() {
           {/* Popular Tags */}
           <div className="mb-6">
             <h3 className="text-lg font-medium text-gray-700 mb-3">Popular Tags</h3>
-            <ul className="space-y-2">
-              <li>
+           <ul className="space-y-2">
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -150,7 +151,7 @@ export default function LandingPage() {
                   <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">8</span>
                 </a>
               </li>
-              <li>
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -168,8 +169,8 @@ export default function LandingPage() {
           {/* Regions */}
           <div className="mb-6">
             <h3 className="text-lg font-medium text-gray-700 mb-3">Regions</h3>
-            <ul className="space-y-2">
-              <li>
+           <ul className="space-y-2">
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
@@ -181,13 +182,13 @@ export default function LandingPage() {
                   <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">9</span>
                 </a>
               </li>
-              <li>
+              <li className="bg-[#A4BBD0] text-gray-800 px-2 py-1 rounded-lg text-sm">
                 <a
                   href="#"
                   className={`flex justify-between items-center ${
                     activeFilter === 'West Coast' ? 'text-brown-600' : 'text-gray-700 hover:text-indigo-600'
                   }`}
-                  onClick={() => setActiveFilter('West Coast')}
+                  onClick={() => setActiveFilter(' West Coast')}
                 >
                   <span>West Coast</span>
                   <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">7</span>
@@ -199,28 +200,19 @@ export default function LandingPage() {
       </div>
 
       {/* Right Section */}
-      <div className="flex-1 p-6">
-        {/* Search Bar */}
-        <div className="mb-12">
-          <p className="text-lg text-gray-600 mb-4">
-            Browse and analyze FCC docket documents with AI-powered summaries
-          </p>
-          <input
-            type="text"
-            placeholder="Search dockets..."
-            className="w-full max-w-2xl px-6 py-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
-        </div>
+      <div className="flex-1 p-6 bg-gradient-to-br from-[#07326A] to-blue-50">
+        {/* Header Section */}
+        <HeaderSection />
 
         {/* Hot Dockets Heading */}
- <h2 className="text-2xl font-bold text-gray-900 mb-4">{activeFilter}</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">{activeFilter}</h2>
 
         {/* Hot Docket Tiles */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {mockDockets.map((docket) => (
             <div
               key={docket.name}
-              className={`relative bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-600 ${hoveredDocket?.name === docket.name ? 'bg-teal-200 border-0 border-teal-400' : 'hover:bg-blue-50'
+              className={`relative bg-[#A4BBDD] p-6 rounded-lg shadow-md hover:shadow-full transition-shadow duration-600 ${hoveredDocket?.name === docket.name ? 'bg-teal-200 border-0 border-teal-400' : 'hover:bg-blue-50'
                 }`}
               onMouseEnter={() => setHoveredDocket(docket)}
             >
