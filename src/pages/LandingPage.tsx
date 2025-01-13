@@ -4,6 +4,7 @@ import DocketRocketLogo from '../components/DocketRocketLogo';
 import { mockDockets } from '../data/mockData';
 import { Docket, DocumentSummary, Comment, Reply } from '../types/docket';
 import HeaderSection from '../components/HeaderSection';
+import FilterSection from '../components/FilterSection'
 
 export default function LandingPage() {
   const [hoveredDocket, setHoveredDocket] = useState<Docket | null>(null);
@@ -13,9 +14,9 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex">
       {/* Left Section */}
-      <div className="w-64 bg-gradient-to-br from-blue-50 to-[#07326A] p-6 shadow-md flex-shrink-0">
+      <div className="w-64 bg-gradient-to-br from-blue-50 to-gray p-6 shadow-md flex-shrink-0">
         {/* Logo and Heading */}
-        <div className="mb-6 bg-gradient-to-r from-blue-100 to-purple-100 p-4 rounded-lg">
+        <div className="w-64 mb-6 bg-gradient-to-r from-blue-100 p-4">
           <div className="w-16 h-16">
             <DocketRocketLogo />
           </div>
@@ -207,66 +208,81 @@ export default function LandingPage() {
         {/* Hot Dockets Heading */}
         <h2 className="text-2xl font-bold text-gray-900 mb-4">{activeFilter}</h2>
 
-        {/* Hot Docket Tiles */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mockDockets.map((docket) => (
-            <div
-              key={docket.name}
-              className={`relative bg-[#A4BBDD] p-6 rounded-lg shadow-md hover:shadow-full transition-shadow duration-600 ${hoveredDocket?.name === docket.name ? 'bg-teal-200 border-0 border-teal-400' : 'hover:bg-blue-50'
-                }`}
-              onMouseEnter={() => setHoveredDocket(docket)}
-            >
-              {/* Docket Name */}
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">{docket.name}</h3>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {mockDockets.map((docket) => (
+    <div
+      key={docket.name}
+      className={`relative bg-[#A4BBDD] p-6 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-95 hover:shadow-lg active:scale-90 ${
+        hoveredDocket?.name === docket.name ? 'scale-95 bg-white border-0 border-teal-400' : 'hover:scale-95 hover:bg-blue-50'
+      }`}
+      onClick={() => setHoveredDocket(docket)} // Show pop-up on click anywhere in the tile
+    >
+      {/* Docket Name */}
+      <h3
+        className="text-lg font-semibold text-gray-900 mb-2 hover:text-indigo-600 cursor-pointer"
+        onMouseEnter={() => setHoveredDocket(docket)} // Show pop-up on hover of the heading
+      >
+        {docket.name}
+      </h3>
 
-              {/* Docket Description */}
-              <p className="text-sm text-gray-600 mb-4">{docket.description_display}</p>
+      {/* Docket Description */}
+      <p className="text-sm text-gray-600 mb-4">{docket.description_display}</p>
 
-              {/* Docket Date */}
-              <span className="text-sm text-gray-500">{docket.date_proceeding_created}</span>
-            </div>
-          ))}
-        </div>
+      {/* Docket Date */}
+      <span className="text-sm text-gray-500">{docket.date_proceeding_created}</span>
+    </div>
+  ))}
+</div>
       </div>
 
-      {/* Pop-up for JSON Data */}
-      {hoveredDocket && (
-        <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-          onClick={() => setHoveredDocket(null)} // Close pop-up on clicking outside
+      {/* Pop-up for Glimpse */}
+{hoveredDocket && (
+  <div
+    className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+    onClick={() => setHoveredDocket(null)} // Close pop-up on clicking outside
+  >
+    <div
+      className="bg-white p-6 rounded-lg shadow-lg border-2 border-gradient-to-r from-blue-400 to-purple-400 max-w-[90%] max-h-[90vh] overflow-y-auto relative"
+      onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the pop-up
+      style={{
+        transform: 'translate(-50%, -50%)',
+        top: '50%',
+        left: '50%',
+        position: 'fixed',
+      }}
+    >
+      {/* Close Button */}
+      <div className="flex justify-between items-center sticky top-0 bg-white z-10">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Docket Summary Glimpse</h2>
+        <button
+          className="text-gray-500 hover:text-gray-700"
+          onClick={() => setHoveredDocket(null)}
         >
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg border-2 border-gradient-to-r from-blue-400 to-purple-400"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the pop-up
-          >
-            <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Docket Details</h2>
-              <button
-                className="text-gray-500 hover:text-gray-700"
-                onClick={() => setHoveredDocket(null)}
-              >
-                &times; {/* Close icon */}
-              </button>
-            </div>
-            <pre className="text-sm text-gray-700 whitespace-pre-wrap">
-              {JSON.stringify(hoveredDocket, null, 2)}
-            </pre>
-            <div className="mt-4 flex justify-between">
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                onClick={() => {
-                  setHoveredDocket(null); // Close the pop-up
-                  // Navigate to the LandingPage or perform any other action
-                  navigate(`/docket/${hoveredDocket.name}`); // Navigate to DocketPage
-                }}
-              >
-                Visit Docket →
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+          &times; {/* Close icon */}
+        </button>
+      </div>
+
+      {/* Content */}
+      <pre className="text-sm text-gray-700 whitespace-pre-wrap">
+        This petition, submitted by NextNav Inc. to the Federal Communications Commission (FCC), advocates for the reconfiguration of the 902-928 MHz band, known as the "Lower 900 MHz Band," to facilitate the deployment of a next-generation terrestrial Positioning, Navigation, and Timing (PNT) network. This network is intended to complement and back up the U.S. Global Positioning System (GPS), addressing its vulnerabilities and coverage limitations, particularly indoors and in urban canyons. The proposal also seeks to integrate this PNT network with 5G technologies, thereby enhancing mobile broadband capacity and ensuring national security, economic resilience, and public safety.
+      </pre>
+
+      {/* Visit Docket Link */}
+      <div className="mt-4 flex justify-between sticky bottom-0 bg-white z-10">
+        <a
+          href="#"
+          className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+          onClick={() => {
+            setHoveredDocket(null); // Close the pop-up
+            navigate(`/docket/${hoveredDocket.name}`); // Navigate to DocketPage
+          }}
+        >
+          Visit Docket →
+        </a>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 }
