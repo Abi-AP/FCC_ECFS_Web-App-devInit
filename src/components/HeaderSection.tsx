@@ -40,9 +40,10 @@ const HeaderSection = () => {
         <div className="absolute w-32 h-2 bg-white opacity-10 transform rotate-45 bottom-1/4 left-28 -translate-x-12 animate-zigzag-reverse"></div>
       </div>
 
-      <h3 className="text-bold text-gray-600 mb-4 relative z-10">
-        Browse and analyze FCC docket documents with AI-powered summaries
+      <h3 className="font-bold text-gray-600 mb-4 relative z-10 glow-effect">
+        Browse and analyze FCC docket documents with ease. Explore dockets with AI-powered summaries, customisation and more.
       </h3>
+      
       <div className="relative w-full max-w-2xl mx-auto z-10">
         <input
           type="text"
