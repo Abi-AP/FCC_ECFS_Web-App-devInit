@@ -1,6 +1,6 @@
 # FCC ECFS Web App
 
-A web application for the Federal Communications Commission (FCC) Electronic Comment Filing System (ECFS).
+The FCC ECFS Web App is a web-based application designed to provide a user-friendly interface for accessing and viewing the Federal Communications Commission (FCC) Electronic Comment Filing System (ECFS) dockets.
 
 ## Table of Contents
 
@@ -14,14 +14,18 @@ A web application for the Federal Communications Commission (FCC) Electronic Com
 
 ## Introduction
 
-The FCC ECFS Web App is a web application designed to provide a user-friendly interface for the FCC's Electronic Comment Filing System (ECFS). The application allows users to view and submit comments on proposed rules and regulations.
+ This application is intended to simplify the process of searching and viewing dockets, making it easier for users to access the information they need.
+
+The application is built using modern web technologies, including React and TypeScript, and is designed to be responsive and accessible on a variety of devices. The FCC ECFS Web App is a valuable resource for anyone looking to access and view FCC dockets in a convenient and user-friendly way.
 
 ## Features
 
-* View proposed rules and regulations
-* Submit comments on proposed rules and regulations
-* Search for comments by keyword or date
-* View comment history
+* Displays a list of dockets with their corresponding titles and descriptions
+* Allows users to view the details of a selected docket, including its title, description, and comments
+* Provides a search bar to filter dockets by keyword
+* Displays a navigation menu with links to the home page, docket list, and search page
+* Uses a responsive design to adapt to different screen sizes and devices
+* Utilizes a CSS framework to style the application and make it visually appealing
 
 ## Getting Started
 
